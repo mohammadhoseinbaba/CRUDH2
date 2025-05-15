@@ -1,6 +1,6 @@
 package com.example.usermanagement.service;
 
-import com.example.usermanagement.model.User;
+import com.example.usermanagement.model.AppUser;
 import com.example.usermanagement.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,21 +13,21 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public User createUser(User user) {
+    public AppUser createUser(AppUser user) {
         return userRepository.save(user);
     }
 
-    public List<User> getAllUsers() {
+    public List<AppUser> getAllUsers() {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(Long id) {
+    public Optional<AppUser> getUserById(Long id) {
         return userRepository.findById(id);
     }
-    public User updateUser(Long id, User updatedUser){
-        Optional<User> optionalUser = userRepository.findById(id);
+    public AppUser updateUser(Long id, AppUser updatedUser){
+        Optional<AppUser> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()){
-            User existingUser = optionalUser.get();
+            AppUser existingUser = optionalUser.get();
             existingUser.setName(updatedUser.getName());
             existingUser.setEmail(updatedUser.getEmail());
             return userRepository.save(existingUser);

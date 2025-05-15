@@ -1,6 +1,6 @@
 package com.example.usermanagement.controller;
 
-import com.example.usermanagement.model.User;
+import com.example.usermanagement.model.AppUser;
 import com.example.usermanagement.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,22 +15,22 @@ public class UserController {
     private UserService userService;
 
     @PostMapping
-    public User createUser(@RequestBody User user) {
+    public AppUser createUser(@RequestBody AppUser user) {
         return userService.createUser(user);
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
+    public List<AppUser> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping({"/{id}"})
-    public Optional<User> getUserById(@PathVariable Long id) {
+    public Optional<AppUser> getUserById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @PutMapping("{id}")
-    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+    public AppUser updateUser(@PathVariable Long id, @RequestBody AppUser user) {
         return userService.updateUser(id, user);
     }
 
